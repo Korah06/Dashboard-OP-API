@@ -1,5 +1,5 @@
 @host  = http://localhost:5189
-
+@userId = 01a0f8d2-2bd3-717c-99cc-9947da015119
 
 ### Obtener todos
 GET {{host}}/api/User
