@@ -26,6 +26,7 @@ namespace Dashboard_OP.src.api.Services.Implementations
 
         public async Task<User> CreateAsync(User user)
         {
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user;
@@ -39,6 +40,7 @@ namespace Dashboard_OP.src.api.Services.Implementations
             // Copia aquí las propiedades de tu User
             existing.UserName = user.UserName;
             existing.Email = user.Email;
+            existing.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
             await _context.SaveChangesAsync();
             return true;

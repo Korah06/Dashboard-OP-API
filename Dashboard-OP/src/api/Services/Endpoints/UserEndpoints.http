@@ -1,13 +1,8 @@
 @host  = http://localhost:5189
-@userId = 01a0f8d2-2bd3-717c-99cc-9947da015119
+@userId = 01a0f8ec-81b8-75cb-907f-7074f6c184c6
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjAxYTBmOGVjLTgxYjgtNzVjYi05MDdmLTcwNzRmNmMxODRjNiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJtYXJpbyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1hcmlvQHRlc3QuY29tIiwiZXhwIjoxNzkwODg5ODU1LCJpc3MiOiJEYXNoYm9hcmQtT1AiLCJhdWQiOiJEYXNoYm9hcmQtT1AifQ.-gjq6TQjFfcH1VF78lcqcwsXHqJODO_EvYfUcGPzi0M
 
-### Obtener todos
-GET {{host}}/api/User
-
-### Obtener uno
-GET {{host}}/api/User/{{userId}}
-
-### Crear
+### Registrarse (sin token)
 POST {{host}}/api/User
 Content-Type: application/json
 
@@ -17,8 +12,18 @@ Content-Type: application/json
   "password": "1234"
 }
 
+
+### Obtener todos
+GET {{host}}/api/User
+Authorization: Bearer {{token}}
+
+### Obtener uno
+GET {{host}}/api/User/{{userId}}
+Authorization: Bearer {{token}}
+
 ### Actualizar
 PUT {{host}}/api/User/{{userId}}
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -29,3 +34,4 @@ Content-Type: application/json
 
 ### Borrar
 DELETE {{host}}/api/User/{{userId}}
+Authorization: Bearer {{token}}

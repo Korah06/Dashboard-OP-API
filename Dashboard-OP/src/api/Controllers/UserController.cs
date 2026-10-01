@@ -1,10 +1,12 @@
 ﻿using Dashboard_OP.src.api.Models;
 using Dashboard_OP.src.api.Services;
 using Dashboard_OP.src.api.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard_OP.src.api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -34,6 +36,7 @@ namespace Dashboard_OP.src.api.Controllers
         }
 
         // POST: api/User
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<User>> Post([FromBody] User user)
         {
